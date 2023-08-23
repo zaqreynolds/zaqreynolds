@@ -1,8 +1,9 @@
 import Link from "@/node_modules/next/link";
-export default function Coding() {
+const Audio = () => {
   return (
     <main>
       <Link href="/">Home</Link>
     </main>
   );
-}
+};
+export default Audio;

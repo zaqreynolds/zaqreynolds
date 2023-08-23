@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Link from "@/node_modules/next/link";
 
-export default function Home() {
+const Home = () => {
   return (
-    <main className="align-middle">
+    <main>
       <h1>Zaq Reynolds</h1>
       <Link href="/coding" className="m-10">
         Coding
@@ -15,4 +15,5 @@ export default function Home() {
       </Link>
     </main>
   );
-}
+};
+export default Home;
