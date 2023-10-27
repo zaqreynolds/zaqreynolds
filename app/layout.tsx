@@ -1,8 +1,9 @@
+import Header from "@/components/Header";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Cinzel } from "next/font/google";
+import { Roboto } from "next/font/google";
 
-const bodoni = Cinzel({ weight: "400", subsets: ["latin"] });
+const roboto = Roboto({ weight: "400", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: `Zaq Reynolds's Website`,
@@ -16,10 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={bodoni.className}>
+      <body className={roboto.className}>
         <div
-          className={`min-h-screen min-w-screen flex flex-col overflow-hidden`}
+          className={`min-h-screen min-w-screen flex flex-col overflow-hidden bg-olive`}
         >
+          <Header />
           {children}
         </div>
       </body>
