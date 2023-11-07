@@ -16,10 +16,7 @@ const config: Config = {
     colors: {
       olive: "#3D4C3F",
     },
-    // container: {
-    //   center: true,
-    //   padding: "1rem",
-    // },
+
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
