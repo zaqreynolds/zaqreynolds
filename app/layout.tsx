@@ -1,8 +1,18 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Roboto, Alegreya_Sans, Space_Grotesk } from "next/font/google";
 
 const roboto = Roboto({ weight: "400", subsets: ["latin"], display: "swap" });
+const alegreyaSans = Alegreya_Sans({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
+const spaceGrotesk = Space_Grotesk({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: `Zaq Reynolds's Website`,
@@ -16,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} text-defaultText`}>
+      <body className={`${spaceGrotesk.className} text-defaultText`}>
         <div
           className={`min-h-screen min-w-screen flex flex-col overflow-hidden bg-black`}
         >
