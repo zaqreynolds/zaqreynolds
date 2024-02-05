@@ -15,6 +15,7 @@ const config: Config = {
     },
     colors: {
       olive: "#3D4C3F",
+      defaultText: "#99b0a3",
     },
 
     extend: {
