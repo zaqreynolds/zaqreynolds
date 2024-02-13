@@ -1,1 +1,2 @@
-<div>This is About</div>;
+const About = () => <div>This is About</div>;
+export default About;

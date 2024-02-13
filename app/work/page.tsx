@@ -1,1 +1,2 @@
-<div>This is Work</div>;
+const Work = () => <div>This is Work</div>;
+export default Work;
