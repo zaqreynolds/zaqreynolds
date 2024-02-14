@@ -1,2 +1,11 @@
-const Projects = () => <div>This is Projects</div>;
+import Header from "@/components/Header";
+
+const Projects = () => {
+  return (
+    <div>
+      <Header />
+      <h1>Projects</h1>
+    </div>
+  );
+};
 export default Projects;
