@@ -4,12 +4,14 @@ const Home = () => {
   const navList = ["About", "Work", "Projects", "Contact"];
 
   return (
-    <main className="h-screen w-screen flex p-5 justify-between">
+    <main className="h-screen w-screen flex flex-col xl:flex-row p-5 lg:justify-between">
       <div className="h-full w-full flex flex-col">
-        <h1 className="text-9xl">Zaq Reynolds</h1>
-        <p>Full-stack web developer</p>
+        <h1 className="text-5xl sm:text-6xl lg:text-8xl xl:text-9xl">
+          Zaq Reynolds
+        </h1>
+        <p className="opacity-90">Full-stack web developer</p>
       </div>
-      <div className="h-full flex flex-col pr-44 justify-center">
+      <div className="h-full flex flex-col lg:pr-44 justify-center">
         {navList.map((navItem) => (
           <Link
             title={navItem}
@@ -17,11 +19,6 @@ const Home = () => {
             key={navItem}
           />
         ))}
-        {/* <h2 className="text-7xl mb-10">About</h2>
-        <h2 className="text-7xl mb-10">Work</h2>
-        <h2 className="text-7xl mb-10">Projects</h2>
-        <h2 className="text-7xl mb-10">Contact</h2> */}
-        {/* <Link title="Resume" destination="/resume" /> */}
       </div>
     </main>
   );
