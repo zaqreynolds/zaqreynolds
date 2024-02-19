@@ -13,12 +13,12 @@ const config: Config = {
       lg: "976px",
       xl: "1440px",
     },
-    colors: {
-      olive: "#3D4C3F",
-      defaultText: "#99b0a3",
-    },
 
     extend: {
+      colors: {
+        olive: "#3D4C3F",
+        defaultText: "#99b0a3",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
