@@ -50,12 +50,13 @@ const DropDownMenu = () => {
         >
           <ul className="py-2 text-sm ">
             {activeNavList.map((navItem) => (
-              <Link
-                title={navItem}
-                destination={`/${navItem.toLowerCase()}`}
-                key={navItem}
-                small={true}
-              />
+              <li key={navItem}>
+                <Link
+                  title={navItem}
+                  destination={`/${navItem.toLowerCase()}`}
+                  small={true}
+                />
+              </li>
             ))}
           </ul>
         </div>

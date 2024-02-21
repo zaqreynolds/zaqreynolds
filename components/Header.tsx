@@ -19,7 +19,9 @@ const Header = () => {
 
   return (
     <header
-      className={`${isHome ? `hidden` : `block`} w-full pt-1 w-full z-50`}
+      className={`${
+        isHome ? `hidden` : `block`
+      } w-full pt-1 w-full z-50 bg-black bg-opacity-50 `}
     >
       <div className="px-2 flex justify-center">
         <DropDownMenu />

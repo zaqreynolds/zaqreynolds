@@ -13,7 +13,7 @@ const Link = ({
     <NextLink href={destination} className="">
       <h2
         className={`${
-          small ? `text-xl mb-0` : `text-7xl mb-10`
+          small ? `text-2xl mb-0` : `text-7xl mb-10`
         } hover:text-olive `}
       >
         {title}
