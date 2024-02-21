@@ -38,9 +38,9 @@ const Header = () => {
 
   return (
     <header className="w-full pt-1">
-      <div className="px-2 flex">
+      <div className="px-2 flex justify-center">
         {/* Burger Menu */}
-        <div className="">
+        <div>
           <button className="w-6 h-6 mr-2" onClick={toggleMenu}>
             {!open && <HamburgerMenuIcon width="20" height="20" />}
             {open && <Cross1Icon width="20" height="20" />}
@@ -64,7 +64,9 @@ const Header = () => {
             </div>
           )}
         </div>
+        <div className="grow" />
         <Link title="Zaq Reynolds" destination={"/"} small={true} />
+        <div className="grow pr-[32px]" />
       </div>
       <div className="border-b border-gray-200 my-1 opacity-75 w-full" />
     </header>
