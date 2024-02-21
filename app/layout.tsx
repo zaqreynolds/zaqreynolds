@@ -27,10 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${spaceGrotesk.className} text-defaultText`}>
-        <div
-          className={`min-h-screen min-w-screen flex flex-col overflow-hidden bg-black`}
-        >
-          <div className="flex-grow">{children}</div>
+        <div className="min-h-screen min-w-screen flex flex-col overflow-hidden bg-black">
+          <div className="flex-grow pattern-wavy pattern-gray-900 pattern-bg-darkOlive pattern-opacity-100 bg-opacity-25 pattern-size-5 ">
+            {children}
+          </div>
         </div>
       </body>
     </html>
