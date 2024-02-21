@@ -17,7 +17,11 @@ const config: Config = {
     extend: {
       colors: {
         olive: "#3D4C3F",
+        darkOlive: "#232b24",
         defaultText: "#99b0a3",
+      },
+      patterns: {
+        black: "#000",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -26,6 +30,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-bg-patterns")],
 };
 export default config;
