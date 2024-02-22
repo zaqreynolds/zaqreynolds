@@ -33,7 +33,7 @@ const DropDownMenu = () => {
   const pathname = usePathname();
 
   const activeNavList = navList.filter(
-    (navItem) => navItem.toLowerCase() !== pathname.slice(1)
+    (navItem) => navItem.destination !== pathname.slice(1)
   );
 
   return (
@@ -50,10 +50,10 @@ const DropDownMenu = () => {
         >
           <ul className="py-2 text-sm ">
             {activeNavList.map((navItem) => (
-              <li key={navItem}>
+              <li key={navItem.title}>
                 <StyledLink
-                  title={navItem}
-                  destination={`/${navItem.toLowerCase()}`}
+                  title={navItem.title}
+                  destination={`/${navItem.destination}`}
                   small={true}
                 />
               </li>

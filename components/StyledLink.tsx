@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import Link from "next/link";
 
 const StyledLink = ({
   title,
@@ -10,7 +10,7 @@ const StyledLink = ({
   small?: boolean;
 }) => {
   return (
-    <NextLink href={destination} className="">
+    <Link href={destination} className="">
       <h2
         className={`${
           small ? `text-2xl mb-0` : `text-7xl mb-10`
@@ -19,7 +19,7 @@ const StyledLink = ({
         {title}
         {!small && <div className="border-b border-gray-200 mt-2 opacity-75" />}
       </h2>
-    </NextLink>
+    </Link>
   );
 };
 

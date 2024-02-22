@@ -6,9 +6,9 @@ const PrimaryNav = () => {
     <div className="h-full flex flex-col lg:pr-44 justify-center">
       {navList.map((navItem) => (
         <StyledLink
-          title={navItem}
-          destination={`/${navItem.toLowerCase()}`}
-          key={navItem}
+          title={navItem.title}
+          destination={`/${navItem.destination}`}
+          key={navItem.title}
         />
       ))}
     </div>
