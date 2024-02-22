@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import Link from "./Link";
-import DropDownMenu from "./dropDownMenu";
+import StyledLink from "./StyledLink";
+import DropDownMenu from "./DropDownMenu";
 
 const Header = () => {
   const pathname = usePathname();
@@ -26,7 +26,7 @@ const Header = () => {
       <div className="px-2 flex justify-center">
         <DropDownMenu />
         <div className="grow" />
-        <Link title="Zaq Reynolds" destination={"/"} small={true} />
+        <StyledLink title="Zaq Reynolds" destination={"/"} small={true} />
         <div className="grow pr-[32px]" />
       </div>
       <div className="border-b border-gray-200 my-1 opacity-75 w-full" />

@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 
-const Link = ({
+const StyledLink = ({
   title,
   destination,
   small = false,
@@ -23,4 +23,4 @@ const Link = ({
   );
 };
 
-export default Link;
+export default StyledLink;

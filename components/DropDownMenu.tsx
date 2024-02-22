@@ -1,6 +1,6 @@
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { useEffect, useRef, useState } from "react";
-import Link from "./Link";
+import StyledLink from "./StyledLink";
 import navList from "@/app/navList";
 import { usePathname } from "next/navigation";
 
@@ -51,7 +51,7 @@ const DropDownMenu = () => {
           <ul className="py-2 text-sm ">
             {activeNavList.map((navItem) => (
               <li key={navItem}>
-                <Link
+                <StyledLink
                   title={navItem}
                   destination={`/${navItem.toLowerCase()}`}
                   small={true}

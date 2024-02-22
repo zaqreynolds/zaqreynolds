@@ -1,11 +1,11 @@
 import navList from "@/app/navList";
-import Link from "@/components/Link";
+import StyledLink from "@/components/StyledLink";
 
 const PrimaryNav = () => {
   return (
     <div className="h-full flex flex-col lg:pr-44 justify-center">
       {navList.map((navItem) => (
-        <Link
+        <StyledLink
           title={navItem}
           destination={`/${navItem.toLowerCase()}`}
           key={navItem}
