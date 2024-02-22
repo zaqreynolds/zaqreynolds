@@ -4,13 +4,15 @@ const StyledLink = ({
   title,
   destination,
   small = false,
+  onClick,
 }: {
   title: string;
   destination: string;
   small?: boolean;
+  onClick?: () => void;
 }) => {
   return (
-    <Link href={destination} className="">
+    <Link href={destination} className="" onClick={onClick}>
       <h2
         className={`${
           small ? `text-2xl mb-0` : `text-7xl mb-10`

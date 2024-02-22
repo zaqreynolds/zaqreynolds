@@ -55,6 +55,7 @@ const DropDownMenu = () => {
                   title={navItem.title}
                   destination={`/${navItem.destination}`}
                   small={true}
+                  onClick={toggleMenu}
                 />
               </li>
             ))}
