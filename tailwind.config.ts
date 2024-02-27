@@ -18,7 +18,7 @@ const config: Config = {
       colors: {
         olive: "#3D4C3F",
         darkOlive: "#232b24",
-        defaultText: "#99b0a3",
+        default: "#99b0a3",
       },
       patterns: {
         black: "#000",
