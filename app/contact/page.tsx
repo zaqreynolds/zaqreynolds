@@ -1,4 +1,4 @@
-import CustomIcon from "@/components/CustomIcon";
+import CustomIcon from "@/app/components/CustomIcon";
 
 const Contact = () => {
   return (
@@ -7,7 +7,7 @@ const Contact = () => {
       <div className="flex-1 flex flex-col justify-between">
         <div>
           <p className="pb-2">
-            I&apos;m always open to new opportunities. Feel free to reach out to
+            I&apos;m always open to new opportunities. Feel free to reach out
             and tell me a little bit about yourself or your project.
           </p>
           <form className="flex flex-col justify-center items-center">

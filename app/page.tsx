@@ -1,4 +1,4 @@
-import PrimaryNav from "@/components/PrimaryNav";
+import PrimaryNav from "@/app/components/PrimaryNav";
 
 const Home = () => {
   return (

@@ -1,5 +1,5 @@
 import navList from "@/app/navList";
-import StyledLink from "@/components/StyledLink";
+import StyledLink from "@/app/components/StyledLink";
 
 const PrimaryNav = () => {
   return (
