@@ -1,14 +1,43 @@
 "use client";
 import CustomIcon from "@/app/components/CustomIcon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const defaultFormData = { name: "", email: "", message: "" };
+  const [formData, setFormData] = useState(defaultFormData);
   const [isButtonActive, setButtonActive] = useState(false);
+
+  const handleFormChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    const { id, value } = event.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  useEffect(() => {
+    if (formData.name && formData.email && formData.message) {
+      setButtonActive(true);
+    } else {
+      setButtonActive(false);
+    }
+  }, [formData]);
+
+  console.log("formData: ", formData);
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+
+    if (trimmedEmail === "" || trimmedName === "") {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    // Submit the form
+    setFormData(defaultFormData);
+  };
 
   return (
     <main className="flex flex-col p-5 z-0 overflow-y-auto w-full">
@@ -19,13 +48,19 @@ const Contact = () => {
             I&apos;m always open to new opportunities. Feel free to reach out
             and tell me a little bit about yourself or your project.
           </p>
-          <form className="flex flex-col justify-center items-center">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col justify-center items-center pt-1"
+          >
             <div className="flex flex-col justify-center items-start pb-2">
               <label className="text-left">Name:</label>
               <input
                 type="text"
                 placeholder="Name"
-                className="bg-green-100 text-darkOlive w-80 my-2"
+                className="bg-green-100 text-darkOlive w-80 my-2 p-1 rounded"
+                id="name"
+                value={formData.name}
+                onChange={handleFormChange}
               />
             </div>
             <div className="flex flex-col justify-center items-start pb-2">
@@ -33,7 +68,10 @@ const Contact = () => {
               <input
                 type="email"
                 placeholder="Email"
-                className="bg-green-100 text-darkOlive w-80 my-2"
+                className="bg-green-100 text-darkOlive w-80 my-2 p-1 rounded"
+                id="email"
+                value={formData.email}
+                onChange={handleFormChange}
               />
             </div>
             <div className="flex flex-col justify-center items-start">
@@ -42,7 +80,10 @@ const Contact = () => {
                 placeholder="Write your message here"
                 rows={10}
                 cols={30}
-                className="bg-green-100 text-darkOlive w-80 my-2"
+                className="bg-green-100 text-darkOlive w-80 my-2 p-1 rounded"
+                id="message"
+                value={formData.message}
+                onChange={handleFormChange}
               />
             </div>
             <button
