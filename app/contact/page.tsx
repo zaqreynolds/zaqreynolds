@@ -23,11 +23,11 @@ const Contact = () => {
   // const [formData, setFormData] = useState(defaultFormData);
   const [isButtonActive, setButtonActive] = useState(false);
 
-  const formData = useForm<z.infer<typeof contactSchema>>({
+  const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: defaultFormData,
   });
-  console.log("formData: ", formData);
+  // console.log("formData: ", formData);
   // const handleFormChange = (
   //   event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   // ) => {
@@ -72,6 +72,18 @@ const Contact = () => {
   //   setFormData(defaultFormData);
   // };
 
+  const onSubmit = async (data: z.infer<typeof contactSchema>) => {
+    fetch("/api/contactForm", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("NICE SUBMIT DUDE :D", data));
+  };
+
   return (
     <main className="flex flex-col p-5 z-0 overflow-y-auto w-full">
       <h1 className="text-5xl sm:text-6xl lg:text-8xl xl:text-9xl">Contact</h1>
@@ -81,13 +93,13 @@ const Contact = () => {
             I&apos;m always open to new opportunities. Feel free to reach out
             and tell me a little bit about yourself or your project.
           </p>
-          <Form {...formData}>
+          <Form {...form}>
             <form
-              // onSubmit={handleSubmit}
+              onSubmit={form.handleSubmit(onSubmit)}
               className="flex flex-col justify-center items-center pt-1"
             >
               <FormField
-                control={formData.control}
+                control={form.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem className="w-80">
@@ -101,7 +113,7 @@ const Contact = () => {
                 )}
               />
               <FormField
-                control={formData.control}
+                control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem className="w-80">
@@ -115,7 +127,7 @@ const Contact = () => {
                 )}
               />
               <FormField
-                control={formData.control}
+                control={form.control}
                 name="message"
                 render={({ field }) => (
                   <FormItem className="w-80">

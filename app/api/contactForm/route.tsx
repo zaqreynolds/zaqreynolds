@@ -1,11 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
+import { contactSchema } from "@/app/contactSchema";
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
+  const data = await req.json();
+  const parsed = contactSchema.safeParse(data);
+
   console.log("sup from the API");
-  if (body) {
-    const { name, email, message } = body;
-    console.log(name, email, message);
+
+  if (parsed.success) {
+    return NextResponse.json({
+      message: "Form submitted!",
+      submission: parsed.data,
+    });
+  } else {
+    return NextResponse.json(
+      { message: "Form submission failed", errors: parsed.error.errors },
+      { status: 400 }
+    );
   }
+  //   if (data) {
+  //     const { name, email, message } = data;
+  //     console.log(name, email, message);
+  //   }
   return NextResponse.json({ message: "Form submitted!" });
 }
