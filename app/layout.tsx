@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.className} text-default`}>
+      <body className={`${spaceGrotesk.className} text-lightOlive`}>
         <div className="h-screen w-screen flex flex-col overflow-hidden bg-black pattern-wavy pattern-gray-900 pattern-bg-darkOlive pattern-opacity-100 bg-opacity-25 pattern-size-5">
           <Header />
           <main className="flex flex-grow overflow-hidden">{children}</main>

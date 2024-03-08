@@ -6,7 +6,7 @@ import LinkedInSvg from "./svgs/LinkedInSvg";
 const CustomIcon = ({
   iconType,
   link,
-  initialBgColor = "bg-default",
+  initialBgColor = "bg-lightOlive",
   initialSvgColor = "#99b0a3",
 }: {
   iconType: string;
