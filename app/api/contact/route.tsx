@@ -2,11 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { contactSchema } from "@/app/contactSchema";
 
 export async function POST(req: NextRequest) {
-  const formData = await req.formData();
-
-  const data = Object.fromEntries(formData);
-
+  const data = await req.json();
   const parsed = contactSchema.safeParse(data);
+
+  console.log("sup from the API");
 
   if (parsed.success) {
     return NextResponse.json({
@@ -19,6 +18,4 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
-
-  return NextResponse.json({ message: "Form submitted!" });
 }
