@@ -45,10 +45,6 @@ const ContactForm = ({
     const response = await onFormAction(formData);
 
     if (response.status === 200) {
-      //   console.log("Form submitted!", response.submission);
-      //   console.log("name:", response?.submission?.name ?? "");
-      //   console.log("email:", response?.submission?.email ?? "");
-      //   console.log("message:", response?.submission?.message ?? "");
       const templateParams = {
         from_name: response?.submission?.name,
         from_email: response?.submission?.email,
@@ -64,7 +60,6 @@ const ContactForm = ({
         .then(
           (response) => {
             console.log("EmailJs SUCCESS!", response.status, response.text);
-            console.log("params", templateParams);
           },
           (error) => {
             console.log("EmailJs FAILED...", error);
