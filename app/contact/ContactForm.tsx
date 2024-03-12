@@ -1,13 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import { contactSchema } from "../contactSchema";
-import { z } from "zod";
+import { set, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import emailjs from "@emailjs/browser";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 const ContactForm = ({
   onFormAction,
@@ -31,13 +31,29 @@ const ContactForm = ({
   const defaultFormData = { name: "", email: "", message: "" };
 
   const [isButtonActive, setButtonActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: defaultFormData,
   });
 
+  const { watch } = form;
+  const formName = watch("name");
+  const formEmail = watch("email");
+  const formMessage = watch("message");
+
+  useEffect(() => {
+    if (formName && formEmail && formMessage) {
+      setButtonActive(true);
+    } else {
+      setButtonActive(false);
+    }
+  }, [formName, formEmail, formMessage]);
+
   const onSubmit = async (data: z.infer<typeof contactSchema>) => {
+    setIsLoading(true);
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
@@ -60,9 +76,12 @@ const ContactForm = ({
         .then(
           (response) => {
             console.log("EmailJs SUCCESS!", response.status, response.text);
+            setIsLoading(false);
+            setFormSubmitted(true);
           },
           (error) => {
             console.log("EmailJs FAILED...", error);
+            setIsLoading(false);
           }
         );
       form.reset(defaultFormData);
@@ -73,18 +92,17 @@ const ContactForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col justify-center items-center pt-1"
+        className="flex flex-col justify-center items-center pb-5"
       >
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
-            <FormItem className="w-80">
+            <FormItem className="w-80 pb-3">
               <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} />
               </FormControl>
-              <FormDescription>Your name</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -93,12 +111,12 @@ const ContactForm = ({
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem className="w-80">
+            <FormItem className="w-80 pb-3">
               <FormLabel>E-mail</FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} />
               </FormControl>
-              <FormDescription>Your e-mail</FormDescription>
+
               <FormMessage />
             </FormItem>
           )}
@@ -112,60 +130,38 @@ const ContactForm = ({
               <FormControl>
                 <Textarea placeholder="" {...field} rows={10} cols={30} />
               </FormControl>
-              <FormDescription>Your message</FormDescription>
+
               <FormMessage />
             </FormItem>
           )}
         />
-
-        {/* <div className="flex flex-col justify-center items-start pb-2">
-              <label className="text-left">Name:</label>
-              <input
-                type="text"
-                placeholder="Name"
-                className="bg-green-100 text-darkOlive w-80 my-2 p-1 rounded focus:outline-none focus:ring-offset-2 focus:ring-4 ring-lightOlive"
-                id="name"
-                value={formData.name}
-                onChange={handleFormChange}
+        {!formSubmitted ? (
+          <Button
+            type="submit"
+            disabled={!isButtonActive}
+            className={`bg-lightOlive text-black font-bold w-24 my-2 py-2 px-4 mt-4 rounded
+          ${
+            isButtonActive
+              ? "opacity-100 hover:transform hover:scale-105 transition duration-300 ease-in-out ring-1 ring-lightOlive ring-offset-lightOlive shadow-lg hover:bg-blue-200"
+              : "cursor-not-allowed opacity-50"
+          }
+          `}
+          >
+            {isLoading ? (
+              <ReloadIcon
+                width="20"
+                height="20"
+                className="mr-2 animate-spin"
               />
-            </div>
-            <div className="flex flex-col justify-center items-start pb-2">
-              <label className="text-left">E-mail:</label>
-              <input
-                type="email"
-                placeholder="Email"
-                className="bg-green-100 text-darkOlive w-80 my-2 p-1 rounded focus:outline-none focus:ring-offset-2 focus:ring-4 ring-lightOlive"
-                id="email"
-                value={formData.email}
-                onChange={handleFormChange}
-              />
-            </div>
-            <div className="flex flex-col justify-center items-start">
-              <label className="text-left">Message:</label>
-              <textarea
-                placeholder="Write your message here"
-                rows={10}
-                cols={30}
-                className="bg-green-100 text-darkOlive w-80 my-2 p-1 rounded focus:outline-none focus:ring-offset-2 focus:ring-4 ring-lightOlive"
-                id="message"
-                value={formData.message}
-                onChange={handleFormChange}
-              />
-            </div> */}
-        <Button
-          type="submit"
-          // disabled={!isButtonActive}
-          // className={`bg-olive text-lightOlive font-bold w-24 my-2 py-2 px-4 rounded
-          // ${
-          //   isButtonActive
-          //     ? "opacity-100 hover:transform hover:scale-105 transition duration-300 ease-in-out ring-1 ring-lightOlive ring-offset-lightOlive shadow-lg"
-          //     : "cursor-not-allowed opacity-50"
-          // }
-          // `}
-          // className="bg-olive text-lightOlive font-bold w-24 my-2 py-2 px-4 rounded"
-        >
-          Submit
-        </Button>
+            ) : (
+              "Submit"
+            )}
+          </Button>
+        ) : (
+          <div className="bg-lightOlive text-black font-bold my-2 py-2 px-4 mt-4 rounded">
+            Form submitted!
+          </div>
+        )}
       </form>
     </Form>
   );
