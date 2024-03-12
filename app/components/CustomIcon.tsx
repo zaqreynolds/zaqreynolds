@@ -33,7 +33,7 @@ const CustomIcon = ({
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      className={`flex ${bgColor} h-[37px] w-[37px] justify-center items-center rounded hover:scale-105`}
+      className={`flex ${bgColor} h-[38px] w-[38px] justify-center items-center rounded hover:scale-105`}
     >
       <a href={link} target="_blank">
         {iconType === "GitHub" && <GitHubSvg bgColor={svgColor} />}

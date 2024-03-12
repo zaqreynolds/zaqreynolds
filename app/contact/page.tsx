@@ -1,6 +1,7 @@
 import CustomIcon from "@/app/components/CustomIcon";
 import ContactForm from "./ContactForm";
 import { contactSchema } from "../contactSchema";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const onFormAction = async (formData: FormData) => {
@@ -8,8 +9,26 @@ const Contact = () => {
     const data = Object.fromEntries(formData);
     const parsed = contactSchema.safeParse(data);
 
+    // emailjs.init({ publicKey: process.env.EMAILJS_PUBLIC_KEY });
+
     if (parsed.success) {
-      console.log("Form submitted!", parsed.data);
+      // const templateParams = {
+      //   name: parsed.data.name,
+      //   email: parsed.data.email,
+      //   message: parsed.data.message,
+      // };
+      // await emailjs
+      //   .send("service_hwgsdre", "template_yc0d9h8", templateParams, {
+      //     publicKey: process.env.EMAILJS_PUBLIC_KEY,
+      //   })
+      //   .then(
+      //     (response) => {
+      //       console.log("EmailJs SUCCESS!", response.status, response.text);
+      //     },
+      //     (error) => {
+      //       console.log("EmailJs FAILED...", error);
+      //     }
+      //   );
       return {
         message: "Form submitted!",
         submission: parsed.data,
@@ -19,6 +38,7 @@ const Contact = () => {
       return {
         message: "invalid data",
         issues: parsed.error.issues.map((issue) => issue.message),
+        status: 400,
       };
     }
   };

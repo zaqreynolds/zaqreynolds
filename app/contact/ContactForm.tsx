@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { contactSchema } from "../contactSchema";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import emailjs from "@emailjs/browser";
 import {
   Form,
   FormControl,
@@ -44,6 +45,31 @@ const ContactForm = ({
     const response = await onFormAction(formData);
 
     if (response.status === 200) {
+      //   console.log("Form submitted!", response.submission);
+      //   console.log("name:", response?.submission?.name ?? "");
+      //   console.log("email:", response?.submission?.email ?? "");
+      //   console.log("message:", response?.submission?.message ?? "");
+      const templateParams = {
+        from_name: response?.submission?.name,
+        from_email: response?.submission?.email,
+        message: response?.submission?.message,
+      };
+      await emailjs
+        .send(
+          "service_hwgsdre",
+          "template_yc0d9h8",
+          templateParams,
+          `${process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY}`
+        )
+        .then(
+          (response) => {
+            console.log("EmailJs SUCCESS!", response.status, response.text);
+            console.log("params", templateParams);
+          },
+          (error) => {
+            console.log("EmailJs FAILED...", error);
+          }
+        );
       form.reset(defaultFormData);
     }
   };
