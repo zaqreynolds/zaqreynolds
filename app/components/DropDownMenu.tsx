@@ -38,7 +38,11 @@ const DropDownMenu = () => {
 
   return (
     <div>
-      <button className="w-6 h-6 mr-2" onClick={toggleMenu} ref={anchorRef}>
+      <button
+        className="w-8 h-8 flex items-center justify-center"
+        onClick={toggleMenu}
+        ref={anchorRef}
+      >
         {!open && <HamburgerMenuIcon width="20" height="20" />}
         {open && <Cross1Icon width="20" height="20" />}
       </button>
