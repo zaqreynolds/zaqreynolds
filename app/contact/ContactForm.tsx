@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useRef, useState } from "react";
 import { contactSchema } from "../contactSchema";
-import { set, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import emailjs from "@emailjs/browser";
 import {
@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = ({
   onFormAction,
@@ -52,38 +53,61 @@ const ContactForm = ({
     }
   }, [formName, formEmail, formMessage]);
 
+  let recaptchaRef = useRef<ReCAPTCHA>(null);
+
   const onSubmit = async (data: z.infer<typeof contactSchema>) => {
     setIsLoading(true);
+
+    const recaptchaToken = await recaptchaRef?.current?.executeAsync();
+    recaptchaRef?.current?.reset();
+
+    console.log("recaptchaToken", recaptchaToken);
+
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
     formData.append("message", data.message);
-    const response = await onFormAction(formData);
 
-    if (response.status === 200) {
-      const templateParams = {
-        from_name: response?.submission?.name,
-        from_email: response?.submission?.email,
-        message: response?.submission?.message,
-      };
-      await emailjs
-        .send(
-          "service_hwgsdre",
-          "template_yc0d9h8",
-          templateParams,
-          `${process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY}`
-        )
-        .then(
-          (response) => {
-            console.log("EmailJs SUCCESS!", response.status, response.text);
-            setIsLoading(false);
-            setFormSubmitted(true);
-          },
-          (error) => {
-            console.log("EmailJs FAILED...", error);
-            setIsLoading(false);
-          }
-        );
+    const recaptchaResponse = await fetch("/api/recaptcha", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ recaptchaToken }),
+    });
+
+    if (recaptchaResponse.ok) {
+      const response = await onFormAction(formData);
+
+      if (response.status === 200) {
+        const templateParams = {
+          from_name: response?.submission?.name,
+          from_email: response?.submission?.email,
+          message: response?.submission?.message,
+        };
+        await emailjs
+          .send(
+            "service_hwgsdre",
+            "template_yc0d9h8",
+            templateParams,
+            `${process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY}`
+          )
+          .then(
+            (response) => {
+              console.log("EmailJs SUCCESS!", response.status, response.text);
+              setIsLoading(false);
+              setFormSubmitted(true);
+            },
+            (error) => {
+              console.log("EmailJs FAILED...", error);
+              setIsLoading(false);
+            }
+          );
+        form.reset(defaultFormData);
+      }
+    } else {
+      setIsLoading(false);
+      console.log("much shame");
       form.reset(defaultFormData);
     }
   };
@@ -163,6 +187,12 @@ const ContactForm = ({
           </div>
         )}
       </form>
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey="6LeziJkpAAAAAPefhmaT3RnSMDZEOP_jG3ojCMch"
+        size="invisible"
+        theme="dark"
+      />
     </Form>
   );
 };

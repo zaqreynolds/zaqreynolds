@@ -19,6 +19,4 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
-
-  return NextResponse.json({ message: "Form submitted!" });
 }
