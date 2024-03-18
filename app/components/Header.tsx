@@ -18,14 +18,14 @@ const Header = () => {
   }, [pathname]);
 
   return (
-    <header className={`${isHome ? `hidden` : `block`} pt-1 w-full z-50  `}>
+    <header className={`${isHome ? `hidden` : `block`} pt-1 w-full z-50`}>
       <div className="px-2 flex justify-center">
         <DropDownMenu />
         <div className="grow" />
         <StyledLink title="Zaq Reynolds" destination={"/"} small={true} />
         <div className="grow pr-[32px]" />
       </div>
-      <div className="border-b border-gray-200 pt-1 opacity-75 w-full" />
+      <div className="border-b border-lightOlive pt-1 opacity-60 w-full" />
     </header>
   );
 };

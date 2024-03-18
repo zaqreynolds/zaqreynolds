@@ -166,7 +166,7 @@ const ContactForm = ({
             className={`bg-lightOlive text-black font-bold w-24 my-2 py-2 px-4 mt-4 rounded
           ${
             isButtonActive
-              ? "opacity-100 hover:transform hover:scale-105 transition duration-300 ease-in-out ring-1 ring-lightOlive ring-offset-lightOlive shadow-lg hover:bg-blue-200"
+              ? "opacity-100 hover:transform hover:scale-105 transition duration-300 ease-in-out ring-1 ring-lightOlive ring-offset-lightOlive shadow-lg shadow-black hover:bg-blue-200"
               : "cursor-not-allowed opacity-50"
           }
           `}
