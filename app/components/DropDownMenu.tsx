@@ -50,7 +50,7 @@ const DropDownMenu = () => {
         <div
           id="dropdown"
           ref={dropdownRef}
-          className="z-10 absolute rounded-lg w-40 border border-default pl-2 backdrop-blur-lg "
+          className="z-10 absolute rounded-lg w-40 border border-lightOlive border-opacity-10 backdrop-blur-lg shadow-lg shadow-black"
         >
           <ul className="py-2 text-sm ">
             {activeNavList.map((navItem) => (
