@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import TechChip from "../components/TechChip";
 
-type ProjectType = "fullstack" | "frontend" | "backend";
+type ProjectType = "full" | "front" | "back";
 
 const ProjectCard = ({
   title = "Project Title",
@@ -22,29 +23,45 @@ const ProjectCard = ({
   techStack: string[];
   destination: string;
 }) => {
+  const handleType = (type: ProjectType) => {
+    switch (type) {
+      case "full":
+        return "Fullstack";
+      case "front":
+        return "Frontend";
+      case "back":
+        return "Backend";
+      default:
+        return "Fullstack";
+    }
+  };
+
   return (
-    <div className="mb-3 border border-lightOlive border-opacity-70 rounded p-2 shadow-md shadow-black hover:border-opacity-100 hover:bg-hover hover:shadow-lg hover:mb-6 transition-all duration-500">
-      <h2 className="text-3xl">{title}</h2>
-      <p> Type</p>
-      <h3 className="text-2xl">{description}</h3>
-      <h4 className="text-lg">Project Technologies:</h4>
-      <ul className="flex flex-wrap">
-        {techStack.map((tech, index) => (
-          <li key={index} className="p-1, mr-1">
-            {tech}
-          </li>
-        ))}
-      </ul>
-      {/* <button className="bg-lightOlive text-black font-bold w-30 my-2 py-2 px-4 mt-4 rounded hover:bg-blue-200">
-        Check it out
-      </button> */}
-      <Link
-        href={destination}
-        className="bg-lightOlive text-black flex items-center w-fit my-2 py-2 px-4 mt-4 rounded hover:bg-blue-200"
-      >
-        Check it out
-        <ExternalLinkIcon width="20" height="20" className="ml-2" />
-      </Link>
+    <div className="mb-3 border border-lightOlive border-opacity-70 rounded shadow-md shadow-black hover:border-opacity-100 hover:bg-hover hover:shadow-lg hover:mb-6 transition-all duration-500">
+      <div className="flex flex-col p-1 bg-lightOlive bg-opacity-80">
+        <h2 className=" text-3xl text-background ">{title}</h2>
+        <p className="text-background text-sm">{handleType(type)}</p>
+      </div>
+      <div className="flex flex-col p-2">
+        <h3 className="text-2xl">{description}</h3>
+        <h4 className="text-lg">Project Technologies:</h4>
+        <ul className="flex flex-wrap">
+          {techStack.map((tech, index) => (
+            <li key={index} className="p-1, mr-1">
+              <TechChip tech={tech} />
+            </li>
+          ))}
+        </ul>
+        <div className="flex justify-center">
+          <Link
+            href={destination}
+            className="bg-lightOlive bg-opacity-80 text-black flex items-center w-fit my-2 py-2 px-4 mt-4 rounded hover:bg-opacity-100  "
+          >
+            Check it out
+            <ExternalLinkIcon width="20" height="20" className="ml-2" />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

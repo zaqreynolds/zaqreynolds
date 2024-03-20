@@ -7,9 +7,49 @@ const Projects = () => {
         Projects
       </h1>
       <div className="flex flex-col ">
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        <ProjectCard
+          title="ToDo"
+          type="full"
+          description="more on this later"
+          techStack={[
+            "Javascript",
+            "React",
+            "MUI",
+            "TanStack Query",
+            "Clerk",
+            "DnD Kit",
+            "HTML",
+            "CSS",
+            "Typescript",
+            "Node.js",
+            "Express.js",
+          ]}
+          destination=""
+        />
+        <ProjectCard
+          title="Reddit Crawler"
+          type="front"
+          description="more on this later"
+          techStack={["Javascript", "React", "MUI", "HTML", "CSS"]}
+          destination=""
+        />
+        <ProjectCard
+          title="Zaq Reynolds"
+          type="full"
+          description="more on this later"
+          techStack={[
+            "Next.js",
+            "React",
+            "TypeScript",
+            "TailwindCSS",
+            "Shadcn/ui",
+            "React-Hook-Form",
+            "Zod",
+            "Radix-UI",
+            "HTML",
+          ]}
+          destination=""
+        />
       </div>
     </main>
   );

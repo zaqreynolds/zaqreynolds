@@ -1,6 +1,7 @@
-import CustomIcon from "@/app/components/CustomIcon";
 import ContactForm from "./ContactForm";
 import { contactSchema } from "../contactSchema";
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 const Contact = () => {
   const onFormAction = async (formData: FormData) => {
@@ -37,12 +38,23 @@ const Contact = () => {
         </div>
         <ContactForm onFormAction={onFormAction} />
         <div className="flex px-2 justify-center">
-          <CustomIcon iconType="GitHub" link="https://github.com/zaqreynolds" />
-          <div className="w-10" />
-          <CustomIcon
-            iconType="LinkedIn"
-            link="https://www.linkedin.com/in/zaqreynolds/"
-          />
+          <Link
+            href="https://github.com/zaqreynolds"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center transition-all border-opacity-60 hover:border-opacity-100 duration-500 ease-in-out border-2 border-lightOlive rounded-lg hover:rounded-2xl p-1 hover:bg-lightOlive hover:bg-hover hover:bg-opacity-20 hover:shadow-lg shadow-black cursor-pointer"
+          >
+            <GitHubLogoIcon width={35} height={35} />
+          </Link>
+          <div className="w-32" />
+          <Link
+            href="https://www.linkedin.com/in/zaqreynolds/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center transition-all border-opacity-60 hover:border-opacity-100 duration-500 ease-in-out border-2 border-lightOlive rounded-lg hover:rounded-2xl p-1 hover:bg-lightOlive hover:bg-hover hover:bg-opacity-20 hover:shadow-lg shadow-black cursor-pointer"
+          >
+            <LinkedInLogoIcon width={35} height={35} />
+          </Link>
         </div>
       </div>
     </main>
