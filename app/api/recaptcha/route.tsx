@@ -14,8 +14,10 @@ export async function POST(req: NextRequest) {
   const data = await response.json();
 
   if (data.success) {
-    return Response.json({ message: "recaptcha success" });
+    return new Response(JSON.stringify({ message: "recaptcha success" }));
   } else {
-    return Response.json({ message: "recaptcha failure" }, { status: 400 });
+    return new Response(JSON.stringify({ message: "recaptcha failure" }), {
+      status: 400,
+    });
   }
 }

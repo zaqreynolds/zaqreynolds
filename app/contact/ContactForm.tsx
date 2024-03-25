@@ -1,5 +1,5 @@
 "use client";
-import { createRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { contactSchema } from "../contactSchema";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -61,8 +61,6 @@ const ContactForm = ({
     const recaptchaToken = await recaptchaRef?.current?.executeAsync();
     recaptchaRef?.current?.reset();
 
-    console.log("recaptchaToken", recaptchaToken);
-
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
@@ -107,7 +105,6 @@ const ContactForm = ({
       }
     } else {
       setIsLoading(false);
-      console.log("much shame");
       form.reset(defaultFormData);
     }
   };
