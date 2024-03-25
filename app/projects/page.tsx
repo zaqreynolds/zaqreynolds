@@ -1,5 +1,14 @@
 import ProjectCard from "./ProjectCard";
 
+const toDoDescription =
+  "A full stack todo app that uses Clerk for authentication, TanStack Query for data fetching, and DnD Kit for drag and drop functionality. The front end is built with React and Material UI, and the back end is built with Node.js and Express.js.";
+
+const redditCrawlerDescription =
+  "A front end project that uses the Reddit API to fetch data and display it in two clean and efficient ways using React and Material UI.  More details, comments, replies etc. are avaible for each post.";
+
+const zaqReynoldsDescription =
+  "The website you are currently on! A full stack project built with Next.js, and TypeScript. ";
+
 const Projects = () => {
   return (
     <main className="flex flex-col p-5 z-0 w-full overflow-y-auto">
@@ -10,9 +19,9 @@ const Projects = () => {
         <ProjectCard
           title="ToDo"
           type="full"
-          description="more on this later"
+          description={toDoDescription}
           techStack={[
-            "Javascript",
+            "JavaScript",
             "React",
             "MUI",
             "TanStack Query",
@@ -20,7 +29,7 @@ const Projects = () => {
             "DnD Kit",
             "HTML",
             "CSS",
-            "Typescript",
+            "TypeScript",
             "Node.js",
             "Express.js",
           ]}
@@ -29,14 +38,14 @@ const Projects = () => {
         <ProjectCard
           title="Reddit Crawler"
           type="front"
-          description="more on this later"
-          techStack={["Javascript", "React", "MUI", "HTML", "CSS"]}
+          description={redditCrawlerDescription}
+          techStack={["JavaScript", "React", "MUI", "HTML", "CSS"]}
           destination=""
         />
         <ProjectCard
           title="Zaq Reynolds"
           type="full"
-          description="more on this later"
+          description={zaqReynoldsDescription}
           techStack={[
             "Next.js",
             "React",

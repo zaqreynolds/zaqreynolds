@@ -43,8 +43,10 @@ const ProjectCard = ({
         <p className="text-background text-sm">{handleType(type)}</p>
       </div>
       <div className="flex flex-col p-2">
-        <h3 className="text-2xl">{description}</h3>
-        <h4 className="text-lg">Project Technologies:</h4>
+        <h3 className="text-xl pb-1 border-b-2 border-lightOlive border-opacity-40">
+          {description}
+        </h3>
+        <h4 className="text-lg pt-1">Project Technologies:</h4>
         <ul className="flex flex-wrap">
           {techStack.map((tech, index) => (
             <li key={index} className="p-1, mr-1">
