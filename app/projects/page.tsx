@@ -33,14 +33,14 @@ const Projects = () => {
             "Node.js",
             "Express.js",
           ]}
-          destination=""
+          destination="https://todo.metatech.dev"
         />
         <ProjectCard
           title="Reddit Crawler"
           type="front"
           description={redditCrawlerDescription}
           techStack={["JavaScript", "React", "MUI", "HTML", "CSS"]}
-          destination=""
+          destination="https://redditcrawler.netlify.app/"
         />
         <ProjectCard
           title="Zaq Reynolds"
@@ -57,7 +57,7 @@ const Projects = () => {
             "Radix-UI",
             "HTML",
           ]}
-          destination=""
+          destination="/"
         />
       </div>
     </main>
