@@ -31,7 +31,7 @@ const Contact = () => {
         <div className="hidden md:flex h-full">
           <PrimaryNav />
         </div>
-        <div className="flex flex-col flex-1 md:mr-8 md:mt-4 overflow-hidden">
+        <div className="flex flex-col flex-1 overflow-hidden">
           <h1 className="mb-4 text-5xl sm:text-6xl lg:text-8xl xl:text-9xl">
             Contact
           </h1>
