@@ -8,9 +8,8 @@ const AboutBody = () => {
       </p>
       <br />
       <p>
-        With a career spanning over five years in the tech industry, I have
-        developed a robust skill set in building and optimizing web applications
-        that deliver a seamless user experience.
+        Since 2021 I have developed a robust skill set in building and
+        optimizing web applications that deliver a seamless user experience.
       </p>
       <br />
       <p>

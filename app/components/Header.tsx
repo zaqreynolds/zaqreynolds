@@ -18,7 +18,9 @@ const Header = () => {
   }, [pathname]);
 
   return (
-    <header className={`${isHome ? `hidden` : `block`} pt-1 w-full z-50`}>
+    <header
+      className={`${isHome ? `hidden` : `md:hidden block`}  pt-1 w-full z-50`}
+    >
       <div className="px-2 flex justify-center">
         <DropDownMenu />
         <div className="grow" />
