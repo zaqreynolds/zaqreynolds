@@ -18,6 +18,10 @@ const projectData = [
       "Express.js",
     ],
     destination: "https://todo.metatech.dev",
+    gitHub: [
+      "https://github.com/MetaTech-dev/todo-client",
+      "https://github.com/MetaTech-dev/todo-server",
+    ],
   },
   {
     title: "Reddit Crawler",
@@ -26,6 +30,7 @@ const projectData = [
       "A front end project that uses the Reddit API to fetch data and display it in two clean and efficient ways using React and Material UI.  More details, comments, replies etc. are avaible for each post.",
     tech: ["JavaScript", "React", "MUI", "HTML", "CSS"],
     destination: "https://redditcrawler.netlify.app/",
+    gitHub: ["https://github.com/zaqreynolds/reddit-crawler"],
   },
   {
     title: "Zaq Reynolds",
@@ -44,6 +49,7 @@ const projectData = [
       "HTML",
     ],
     destination: "/",
+    gitHub: ["https://github.com/zaqreynolds/zaqreynolds"],
   },
 ];
 

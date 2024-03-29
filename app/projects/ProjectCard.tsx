@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { ExternalLinkIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import TechChip from "../components/TechChip";
 
 type Project = {
@@ -8,6 +8,7 @@ type Project = {
   description: string;
   tech: string[];
   destination: string;
+  gitHub: string[];
 };
 
 const ProjectCard = (project: Project) => {
@@ -42,16 +43,35 @@ const ProjectCard = (project: Project) => {
             </li>
           ))}
         </ul>
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-4 mb-2">
+          <div className="grow-2" />
           <Link
             href={project.destination}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-lightOlive bg-opacity-80 text-black flex items-center w-fit my-2 py-2 px-4 mt-4 rounded hover:bg-opacity-100  "
+            className="bg-lightOlive bg-opacity-80 text-black flex items-center w-fit py-2 px-4 rounded hover:bg-opacity-100  "
           >
             Check it out
             <ExternalLinkIcon width="20" height="20" className="ml-2" />
           </Link>
+          <div className="grow" />
+
+          <div className="w-20 flex">
+            {project.gitHub?.map((link, index) => (
+              <Link
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={index}
+                className={`flex items-center border-lightOlive border rounded opacity-80 hover:opacity-100 ${
+                  project.gitHub.length > 1 ? "mx-2" : ""
+                }`}
+              >
+                <GitHubLogoIcon width="30" height="30" className="m-1" />
+              </Link>
+            ))}
+          </div>
+          <div className="grow-2" />
         </div>
       </div>
     </div>
