@@ -16,6 +16,7 @@ const projectData = [
       "TypeScript",
       "Node.js",
       "Express.js",
+      "React Context",
     ],
     destination: "https://todo.metatech.dev",
     gitHub: [
@@ -28,7 +29,7 @@ const projectData = [
     type: "front",
     description:
       "A front end project that uses the Reddit API to fetch data and display it in two clean and efficient ways using React and Material UI.  More details, comments, replies etc. are avaible for each post.",
-    tech: ["JavaScript", "React", "MUI", "HTML", "CSS"],
+    tech: ["JavaScript", "React", "MUI", "HTML", "CSS", "Redux Toolkit"],
     destination: "https://redditcrawler.netlify.app/",
     gitHub: ["https://github.com/zaqreynolds/reddit-crawler"],
   },
