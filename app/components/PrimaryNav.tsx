@@ -11,7 +11,7 @@ const PrimaryNav = () => {
   );
 
   return (
-    <div className="h-full flex flex-col lg:pr-44 justify-center">
+    <div className="h-full flex flex-col lg:pr-44 md:pr-20 justify-center">
       {activeNavList.map((navItem) => (
         <StyledLink
           title={navItem.title}

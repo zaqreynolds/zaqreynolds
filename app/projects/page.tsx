@@ -4,7 +4,7 @@ import projectData from "./ProjectData";
 
 const Projects = () => {
   return (
-    <main className="flex flex-col p-5 z-0 overflow-y-hidden">
+    <main className="flex flex-col p-5 z-0 overflow-y-hidden w-full">
       <div className="flex flex-1 overflow-hidden">
         <div className="hidden md:flex h-full">
           <PrimaryNav />

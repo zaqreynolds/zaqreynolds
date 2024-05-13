@@ -37,7 +37,7 @@ const ProjectCard = (project: Project) => {
 
   return (
     <div
-      className={`mb-3 border border-lightOlive border-opacity-70 rounded shadow-md shadow-black hover:border-opacity-100 hover:bg-hover hover:shadow-lg hover:mb-6 transition-all duration-500 overflow-hidden ${
+      className={`mb-3 border border-lightOlive border-opacity-70 rounded shadow-md md:w-5/6 shadow-black hover:border-opacity-100 hover:bg-hover hover:shadow-lg hover:mb-6 transition-all duration-500 overflow-hidden ${
         isOpen ? "max-h-full" : "max-h-50"
       }`}
     >
