@@ -48,7 +48,7 @@ const ProjectCard = (project: Project) => {
         </div>
 
         <div
-          className="flex justify-center items-center "
+          className="flex justify-center items-center cursor-pointer"
           onClick={() => setOpen(!isOpen)}
         >
           <ChevronDownIcon
