@@ -28,7 +28,7 @@ const ProjectCard = (project: Project) => {
     }
   };
 
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(true);
 
   const handleDescription = () =>
     isOpen
