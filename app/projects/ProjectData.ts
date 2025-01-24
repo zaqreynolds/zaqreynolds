@@ -1,5 +1,24 @@
 const projectData = [
   {
+    title: "Hermes",
+    type: "front",
+    description:
+      "A front end project that uses the Amadeus API to fetch flight data and display it in a clean and efficient way using React, Next.js and Tailwind.",
+    tech: [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "TailwindCSS",
+      "HTML",
+      "CSS",
+      "Amadeus API",
+      "React-Hook-Form",
+      "Zod",
+    ],
+    destination: "https://hermes.zaqreynolds.com/",
+    gitHub: ["https://github.com/zaqreynolds/hermes"],
+  },
+  {
     title: "ToDo",
     type: "full",
     description:
