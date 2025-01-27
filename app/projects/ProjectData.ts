@@ -11,6 +11,7 @@ const projectData = [
       "TailwindCSS",
       "HTML",
       "CSS",
+      "Jest",
       "Amadeus API",
       "React-Hook-Form",
       "Zod",
